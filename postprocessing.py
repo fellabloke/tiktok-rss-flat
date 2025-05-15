@@ -37,9 +37,9 @@ async def process_videos(api, identifier, is_hashtag=False):
     try:
         if is_hashtag:
             # For hashtags, use the hashtag search method
-            challenge = api.challenge(identifier)
-            challenge_info = await challenge.info()
-            async for video in challenge.videos(count=10):
+            hashtag_obj = api.hashtag(identifier)
+            hashtag_info = await hashtag_obj.info()
+            async for video in hashtag_obj.videos(count=10):
                 videos_data.append(video)
         else:
             # For users, use the existing user method
@@ -55,7 +55,8 @@ async def process_videos(api, identifier, is_hashtag=False):
 
 async def user_videos():
     with open('subscriptions.csv') as f:
-        cf = csv.DictReader(f, fieldnames=['identifier', 'type'])
+        # Use DictReader without specifying fieldnames to use the header row
+        cf = csv.DictReader(f)
         for row in cf:
             identifier = row['identifier']
             # Default to 'user' if type is not specified
@@ -90,6 +91,9 @@ async def user_videos():
             fg.subtitle(feed_subtitle)
             fg.link(href=ghRawURL + 'rss/' + file_name + '.xml', rel='self')
             fg.language('en')
+            
+            # Add image element to the feed
+            fg.image(url=ghRawURL + 'tiktok-rss.png', title=feed_title, link=ghRawURL + 'rss/' + file_name + '.xml')
             
             # Set the last modification time for the feed to be the most recent post, else now.
             updated = None
