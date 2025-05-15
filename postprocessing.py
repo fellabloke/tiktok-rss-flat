@@ -105,7 +105,11 @@ async def user_videos():
                     # Get author username for hashtag videos
                     author_username = video.as_dict['author']['uniqueId'] if is_hashtag else identifier
                     
+                    # Create the direct link to the TikTok video
                     link = f"https://tiktok.com/@{author_username}/video/{video.id}"
+                    print(f"Adding video link: {link}")
+                    
+                    # Set the link as both the ID and the link for the RSS entry
                     fe.id(link)
                     ts = datetime.fromtimestamp(video.as_dict['createTime'], timezone.utc)
                     fe.published(ts)
@@ -117,7 +121,9 @@ async def user_videos():
                     else:
                         fe.title("No Title")
                     
+                    # Explicitly set the link for the RSS entry
                     fe.link(href=link)
+                    print(f"Set link in RSS entry: {link}")
                     
                     if video.as_dict['desc']:
                         content = video.as_dict['desc'][0:255]
