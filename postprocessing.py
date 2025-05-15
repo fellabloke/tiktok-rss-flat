@@ -39,13 +39,13 @@ async def process_videos(api, identifier, is_hashtag=False):
             # For hashtags, use the hashtag search method
             hashtag_obj = api.hashtag(identifier)
             hashtag_info = await hashtag_obj.info()
-            async for video in hashtag_obj.videos(count=1):
+            async for video in hashtag_obj.videos(count=10):
                 videos_data.append(video)
         else:
             # For users, use the existing user method
             ttuser = api.user(identifier)
             user_data = await ttuser.info()
-            async for video in ttuser.videos(count=1):
+            async for video in ttuser.videos(count=10):
                 videos_data.append(video)
         
         return videos_data
@@ -170,5 +170,7 @@ async def user_videos():
                 fg.rss_file(f'rss/{file_name}.xml', pretty=True)
 
 
+if __name__ == "__main__":
+    asyncio.run(user_videos())
 if __name__ == "__main__":
     asyncio.run(user_videos())
