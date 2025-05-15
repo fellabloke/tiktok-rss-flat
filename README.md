@@ -1,7 +1,7 @@
 ![TikTok RSS Logo](https://tiktokrss.conoroneill.com/favicon-32x32.png)
-# TikTok RSS Using GitHub Actions
+# TikTok RSS for Users and Hashtags Using GitHub Actions
 
-Generate usable RSS feeds from TikTok using GitHub Actions and GitHub Pages.
+Generate usable RSS feeds from TikTok users and hashtags using GitHub Actions and GitHub Pages.
 
 
 **NOTE March 2024: This seems to work again due to improvements in the original TikTok library. It requires an on-the-fly patch to that underlying TikTok library, which is hopefully only temporary**
@@ -22,9 +22,15 @@ Generate usable RSS feeds from TikTok using GitHub Actions and GitHub Pages.
         * Name = MS_TOKEN
         * Value = The value you got for msToken above 
     * Edit config.py to change `ghPagesURL` from "https://conoro.github.io/tiktok-rss-flat/" to your URL
-    * Add the TikTok usernames that you like to subscriptions.csv
+    * Add the TikTok usernames and hashtags that you like to subscriptions.csv in the format:
+      ```
+      identifier,type
+      username,user
+      hashtag,hashtag
+      ```
+      Where "identifier" is either a TikTok username or hashtag (without the # symbol), and "type" is either "user" or "hashtag"
 
-* It's set to run once every 4 hours and generates one RSS XML file per user in the rss output directory.
+* It's set to run once every 4 hours and generates one RSS XML file per user or hashtag in the rss output directory.
 * You may need to update the msToken whenever your get GH Actions erros about TikTok returning an empty response
 
 ## Running locally as an alternative
@@ -56,12 +62,16 @@ git push origin main
     * Feedly Subscription URL = https://conoro.github.io/tiktok-rss-flat/rss/iamtabithabrown.xml
     * (Or in my case where I've set a custom domain for the GitHub Pages project called tiktokrss.conoroneill.com, the URL is https://tiktokrss.conoroneill.com/rss/iamtabithabrown.xml)
 
+    * TikTok Hashtag = veganfood
+    * XML File = rss/hashtag_veganfood.xml
+    * Feedly Subscription URL = https://conoro.github.io/tiktok-rss-flat/rss/hashtag_veganfood.xml
+    * (Or with a custom domain: https://tiktokrss.conoroneill.com/rss/hashtag_veganfood.xml)
+
 ## Acknowledgements
-This uses an unoffical [TikTokPy library](https://github.com/davidteather/TikTok-Api) to extract information about user videos from TikTok as JSON and generate RSS feeds for each user you are interested in.
+This uses an unoffical [TikTokPy library](https://github.com/davidteather/TikTok-Api) to extract information about user videos and hashtag videos from TikTok as JSON and generate RSS feeds for each user or hashtag you are interested in.
 
 Logo was created using the TikTok and RSS [Font Awesome](https://fontawesome.com/license/free) icons via CC BY 4.0 License
 
 Copyright Conor O'Neill, 2021-2024 (conor@conoroneill.com)
 
 License Apache 2.0
-
