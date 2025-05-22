@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+  <channel>
+    <title>prank TikTok</title>
+    <link>https://raw.githubusercontent.com/fellabloke/tiktok-rss-flat/main/rss/prank.xml</link>
+    <description>All the latest TikToks from prank</description>
+    <atom:link href="https://raw.githubusercontent.com/fellabloke/tiktok-rss-flat/main/rss/prank.xml" rel="self"/>
+    <docs>http://www.rssboard.org/rss-specification</docs>
+    <generator>python-feedgen</generator>
+    <image>
+      <url>https://raw.githubusercontent.com/fellabloke/tiktok-rss-flat/main/tiktok-rss.png</url>
+      <title>prank TikTok</title>
+      <link>https://raw.githubusercontent.com/fellabloke/tiktok-rss-flat/main/rss/prank.xml</link>
+    </image>
+    <language>en</language>
+    <lastBuildDate>Mon, 17 Mar 2025 12:30:46 +0000</lastBuildDate>
+    <item>
+      <title>No Title</title>
+      <link>https://tiktok.com/@prank/video/7482754902863744278</link>
+      <description>&lt;img src="https://raw.githubusercontent.com/fellabloke/tiktok-rss-flat/main/thumbnails/prank/screenshot_o4QrpjDPuswKvLvJqIeGeAAIIjLeAPsmpgwOIC.jpg" /&gt; No Description</description>
+      <guid isPermaLink="false">https://tiktok.com/@prank/video/7482754902863744278</guid>
+      <pubDate>Mon, 17 Mar 2025 12:30:46 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
